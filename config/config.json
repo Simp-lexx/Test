@@ -1,0 +1,18 @@
+{
+  "development": {
+    "username": "root",
+    "password": "password",
+    "database": "db_dev",
+    "host": "127.0.0.1",
+    "port": 5858,
+    "dialect": "mysql"
+  },
+  "test": {
+    "database": ":memory:",
+    "dialect": "sqlite"
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "postgres"
+  }
+}

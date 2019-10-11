@@ -3,8 +3,8 @@ export default (sequelize, DataTypes) => {
     lessonId: DataTypes.INTEGER,
     teacherId: DataTypes.INTEGER,
   }, {});
-  lessonTeacher.associate = (models) => {
+  /* lessonTeacher.associate = (models) => {
     // associations can be defined here
-  };
+  }; */
   return lessonTeacher;
 };

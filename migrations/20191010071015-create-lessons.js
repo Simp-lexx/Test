@@ -23,6 +23,7 @@ module.exports = {
       allowNull: false,
       type: Sequelize.DATE,
     },
+    timestamps: false,
   }),
   down: queryInterface => queryInterface.dropTable('lessons'),
 };

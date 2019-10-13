@@ -2,10 +2,13 @@
   "development": {
     "username": "postgres",
     "password": "password",
-    "database": "db",
+    "database": "test_db",
     "host": "127.0.0.1",
-    "port": 5439,
-    "dialect": "postgres"
+    "port": 5432,
+    "dialect": "postgres",
+    "define": {
+      "timestamps": false 
+    }
   },
   "test": {
     "database": ":memory:",

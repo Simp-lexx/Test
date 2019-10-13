@@ -15,14 +15,6 @@ module.exports = {
     visit: {
       type: Sequelize.BOOLEAN,
     },
-    createdAt: {
-      allowNull: false,
-      type: Sequelize.DATE,
-    },
-    updatedAt: {
-      allowNull: false,
-      type: Sequelize.DATE,
-    },
   }),
   down: queryInterface => queryInterface.dropTable('lesson_students'),
 };

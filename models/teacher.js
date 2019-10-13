@@ -3,7 +3,9 @@ export default (sequelize, DataTypes) => {
     name: DataTypes.STRING,
   }, {});
   teacher.associate = (models) => {
-    teacher.belongsTo(models.lesson);
+    teacher.hasMany(models.lesson, {
+      foreignKey: 'teacher_id', as: 'teacher_id', foreignKeyConstraint: false, onDelete: 'cascade',
+    });
     // associations can be defined here
   };
   return teacher;

@@ -6,4 +6,4 @@ pg.defaults.ssl = true;
 
 dotenv.config();
 
-export default new Sequelize(process.env.DATABASE_URL || 'postgres://postgres:password@localhost:5439/test_db');
+export default new Sequelize(process.env.DATABASE_URL || 'postgres://postgres:password@localhost:5432/test_db');

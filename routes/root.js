@@ -4,13 +4,13 @@ import buildFormObj from '../lib/formObjectBuilder'; */
 
 import { lesson, student, teacher } from '../models';
 
-import { getData, checkAuth, filterTasks } from '../lib/tools';
+// import { getData, checkAuth, filterTasks } from '../lib/tools';
 
 export default (router) => {
   router
     .get('root', '/', async (ctx) => {
-      const { query } = url.parse(ctx.request.url, true);
-      const lessons = await filterTasks(lesson, query);
+      // const { query } = url.parse(ctx.request.url, true);
+      const lessons = await lesson.findAll(); // filterTasks(lesson, query);
       const students = await student.findAll();
       const teachers = await teacher.findAll();
       ctx.body = { lessons, students, teachers };

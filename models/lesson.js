@@ -3,10 +3,12 @@ export default (sequelize, DataTypes) => {
     date: DataTypes.DATE,
     title: DataTypes.STRING,
     status: DataTypes.INTEGER,
-  }, {});
+  }, {
+    underscored: true,
+  });
   lesson.associate = (models) => {
-    lesson.belongsToMany(models.teacher, { through: 'lesson-teacher' });
-    lesson.belongsToMany(models.student, { through: 'lesson-student' });
+    lesson.hasMany(models.teacher);
+    // lesson.belongsToMany(models.student, { through: 'lesson-student' });
     // associations can be defined here
   };
   return lesson;

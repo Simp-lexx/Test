@@ -13,7 +13,7 @@ export default (router) => {
       const lessons = await lesson.findAll(); // filterTasks(lesson, query);
       const students = await student.findAll();
       const teachers = await teacher.findAll();
-      ctx.body = { lessons, students, teachers };
+      ctx.body = [lessons, students, teachers];
     });
 
   /*  .post('lessons#create', '/lessons', async (ctx) => {

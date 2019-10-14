@@ -5,7 +5,10 @@ export default (sequelize, DataTypes) => {
     underscored: true,
   });
   teacher.associate = (models) => {
-    teacher.belongsTo(models.lesson, { through: 'lesson-teachers' });
+    teacher.belongsToMany(models.lesson, {
+      through: 'lesson-teacher',
+      // foreignKey: 'teacher_id',
+    });
     /* , {
       foreignKey: 'teacher_id', as: 'teacher_id',
     }); */

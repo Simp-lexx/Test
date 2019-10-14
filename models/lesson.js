@@ -7,7 +7,14 @@ export default (sequelize, DataTypes) => {
     underscored: true,
   });
   lesson.associate = (models) => {
-    lesson.hasMany(models.teacher);
+    lesson.belongsToMany(models.teacher, {
+      through: 'lesson_teacher',
+      // foreignKey: 'id',
+      // as: 'id',
+    });
+    lesson.belongsToMany(models.student, {
+      through: 'lesson_student',
+    });
     // lesson.belongsToMany(models.student, { through: 'lesson-student' });
     // associations can be defined here
   };

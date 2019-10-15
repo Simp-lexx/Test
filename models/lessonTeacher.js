@@ -5,8 +5,5 @@ export default (sequelize, DataTypes) => {
   }, {
     underscore: true,
   });
-  /* lessonTeacher.associate = (models) => {
-    // associations can be defined here
-  }; */
   return lessonTeacher;
 };

@@ -6,9 +6,8 @@ export default (sequelize, DataTypes) => {
   });
   student.associate = (models) => {
     student.belongsToMany(models.lesson, {
-      through: 'lesson-student',
+      through: 'lesson_student',
     });
-    // associations can be defined here
   };
   return student;
 };

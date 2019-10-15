@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const lessonStudents = sequelize.define('lesson_student', {
+  const lessonStudent = sequelize.define('lesson_student', {
     lesson_id: DataTypes.INTEGER,
     student_id: DataTypes.INTEGER,
     visit: DataTypes.BOOLEAN,
@@ -9,5 +9,5 @@ export default (sequelize, DataTypes) => {
   /* lessonStudents.associate = (models) => {
     // associations can be defined here
   }; */
-  return lessonStudents;
+  return lessonStudent;
 };

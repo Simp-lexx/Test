@@ -4,7 +4,12 @@
   "description": "Test",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "webpack": "webpack",
+    "start": "gulp server",
+    "gulp": "gulp",
+    "build": "npx webpack -p",
+    "postinstall": "npm run build"
   },
   "author": "Alexey Kovalenko",
   "repository": {

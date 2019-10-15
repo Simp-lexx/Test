@@ -9,7 +9,10 @@ import { lesson, student, teacher } from '../models';
 export default (router) => {
   router
     .get('root', '/', async (ctx) => {
-      // const { query } = url.parse(ctx.request.url, true);
+      const { query } = url.parse(ctx.request.url, true);
+      console.log(Object.entries(query));
+      // const less = await lesson.findByPk(query);
+      // console.log(less);
       const lessons = await lesson.findAll(); // filterTasks(lesson, query);
       const students = await student.findAll();
       const teachers = await teacher.findAll();

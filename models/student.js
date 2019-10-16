@@ -7,6 +7,7 @@ export default (sequelize, DataTypes) => {
   student.associate = (models) => {
     student.belongsToMany(models.lesson, {
       through: 'lesson_student',
+      foreignKey: 'student_id',
     });
   };
   return student;

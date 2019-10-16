@@ -4,19 +4,20 @@ import buildFormObj from '../lib/formObjectBuilder'; */
 
 import { lesson, student, teacher } from '../models';
 
-// import { getData, checkAuth, filterTasks } from '../lib/tools';
+import { filterLessons } from '../lib/tools';
 
 export default (router) => {
   router
     .get('root', '/', async (ctx) => {
       const { query } = url.parse(ctx.request.url, true);
       console.log(Object.entries(query));
-      // const less = await lesson.findByPk(query);
+      const filteredLessons = await filterLessons(lesson, query);
       // console.log(less);
       const lessons = await lesson.findAll(); // filterTasks(lesson, query);
       const students = await student.findAll();
       const teachers = await teacher.findAll();
-      ctx.body = [lessons, students, teachers];
+      console.log(JSON.stringify(filteredLessons));
+      ctx.body = filteredLessons;
     });
 
   /*  .post('lessons#create', '/lessons', async (ctx) => {
@@ -36,21 +37,5 @@ export default (router) => {
         rollbar.handleError(e);
         ctx.render('tasks/new', { f: buildFormObj(task, e), users });
       }
-    })
-
-    .patch('tasks#update', '/tasks/:id', checkAuth, async (ctx) => {
-      const { statusId, taskId } = ctx.request.body;
-      const task = await Task.findByPk(Number(taskId));
-      task.setStatus(Number(statusId));
-      ctx.redirect(router.url('tasks#view', taskId));
-    })
-
-    .delete('tasks#delete', '/tasks/:id', checkAuth, async (ctx) => {
-      const taskId = Number(ctx.params.id);
-      Task.destroy({
-        where: { id: taskId },
-      });
-      ctx.flash.set('Task Succesfully Deleted.');
-      ctx.redirect(router.url('tasks#list'));
     }); */
 };

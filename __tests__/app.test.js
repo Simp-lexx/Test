@@ -43,13 +43,14 @@ afterAll((done) => {
 
 describe('Lessons Filtration', () => {
   beforeAll(async () => {
+    
     superagent = request.agent(server);
   });
 
-  it('Filter: "My Tasks"', async () => {
+  it('Filter: "All lessons"', async () => {
     await superagent
       .set('Connection', 'keep-alive')
-      .set('content-type', 'application/x-www-form-urlencoded');
+      .set('content-type', 'application/json');
     const response = await superagent
       .get('/')
       .set('Connection', 'keep-alive');

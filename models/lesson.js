@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
   const lesson = sequelize.define('lesson', {
-    date: DataTypes.DATE,
+    date: DataTypes.DATEONLY,
     title: DataTypes.STRING,
     status: DataTypes.INTEGER,
   }, {

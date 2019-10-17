@@ -10,7 +10,7 @@ export default (router) => {
   router
     .get('root', '/', async (ctx) => {
       const { query } = url.parse(ctx.request.url, true);
-      console.log(Object.entries(query));
+      // console.log(Object.entries(query));
       const filteredLessons = await filterLessons(lesson, query);
       // console.log(less);
       const lessons = await lesson.findAll(); // filterTasks(lesson, query);

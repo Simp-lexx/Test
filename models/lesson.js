@@ -1,4 +1,7 @@
+import Sequelize from 'sequelize';
+
 export default (sequelize, DataTypes) => {
+  const { Op } = Sequelize;
   const lesson = sequelize.define('lesson', {
     date: DataTypes.DATEONLY,
     title: DataTypes.STRING,
@@ -15,6 +18,18 @@ export default (sequelize, DataTypes) => {
       through: 'lesson_student',
       foreignKey: 'lesson_id',
     });
+    lesson.addScope('teachers', teacherIds => ({
+      include: [
+        {
+          model: models.teacher,
+          where: {
+            id: {
+              [Op.contains]: teacherIds,
+            },
+          },
+        },
+      ],
+    }));
   };
   return lesson;
 };

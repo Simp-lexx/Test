@@ -18,7 +18,7 @@ export default (sequelize, DataTypes) => {
       through: 'lesson_student',
       foreignKey: 'lesson_id',
     });
-    lesson.addScope('teachers', teacherIds => ({
+    lesson.addScope('teacherIds', teacherIds => ({
       include: [
         {
           model: models.teacher,

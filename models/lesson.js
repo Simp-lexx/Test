@@ -8,6 +8,22 @@ export default (sequelize, DataTypes) => {
     status: DataTypes.INTEGER,
   }, {
     underscored: true,
+    scopes: {
+      date: dates => ({
+        where: {
+          date: {
+            [Op.between]: dates,
+          },
+        },
+      }),
+      status: statusId => ({
+        where: {
+          status: {
+            [Op.eq]: statusId,
+          },
+        },
+      }),
+    },
   });
   lesson.associate = (models) => {
     lesson.belongsToMany(models.teacher, {
@@ -19,16 +35,14 @@ export default (sequelize, DataTypes) => {
       foreignKey: 'lesson_id',
     });
     lesson.addScope('teacherIds', teacherIds => ({
-      include: [
-        {
-          model: models.teacher,
-          where: {
-            id: {
-              [Op.contains]: teacherIds,
-            },
+      include: [{
+        model: models.teacher,
+        where: {
+          id: {
+            [Op.in]: teacherIds,
           },
         },
-      ],
+      }],
     }));
   };
   return lesson;

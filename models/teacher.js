@@ -4,6 +4,7 @@ export default (sequelize, DataTypes) => {
   }, {
     underscored: true,
   });
+
   teacher.associate = (models) => {
     teacher.belongsToMany(models.lesson, {
       through: 'lesson_teacher',

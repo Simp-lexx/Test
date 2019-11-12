@@ -47,11 +47,9 @@ export default (sequelize, DataTypes) => {
     lesson.addScope('studentsCount', count => ({
       include: [{
         model: models.student,
-        where: {
-          id: {
-            [Op.between]: count,
-          },
-        },
+        where: sequelize.where(sequelize.fn('COUNT', sequelize.col('student_id')), {
+          [Op.between]: count
+        }),
       }],
     }));
   };

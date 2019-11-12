@@ -10,9 +10,8 @@ export default (router) => {
       const { query } = url.parse(ctx.request.url, true);
       if (Object.keys(query).length) {
         const params = buildParams(query);
-        const filteredLessons = await lesson.scope(...params).findAll().map(item => getData(item));
-        ctx.body = filteredLessons;
-      }
+        ctx.body = await lesson.scope(...params).findAll().map(item => getData(item));
+      } else ctx.body = await lesson.findAll().map(item => getData(item));
     });
 
   /*  .post('lessons#create', '/lessons', async (ctx) => {
